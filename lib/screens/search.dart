@@ -98,12 +98,14 @@ class _SearchBody extends StatelessWidget {
     return BlocBuilder<SearchBloc, SearchState>(
       builder: (context, state) {
         if (state is SearchLoading) {
-          return const CircularProgressIndicator();
+          return Container(
+              height: 400,
+              child: Center(child: const CircularProgressIndicator()));
         }
 
         if (state is SearchSuccess) {
           return state.searchMovieModel.results.isEmpty
-              ? const Text('No Results')
+              ? Center(child: const Text('No Results'))
               : _SearchResults(items: state.searchMovieModel);
         }
         return const Text('');
