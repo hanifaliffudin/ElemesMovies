@@ -74,12 +74,19 @@ class _DetailsMoviePageState extends State<DetailsMoviePage> {
                         height: 480,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(12.0),
-                          child: Image.network(
-                            constants.AppConstants.imageUrlW500 +
-                                detailsMovie.posterPath,
-                            width: 320,
-                            fit: BoxFit.cover,
-                          ),
+                          child: detailsMovie.posterPath != null
+                              ? Image.network(
+                                  constants.AppConstants.imageUrlW500 +
+                                      detailsMovie.posterPath!,
+                                  width: 320,
+                                  fit: BoxFit.cover,
+                                )
+                              : const SizedBox(
+                                  width: 320,
+                                  child: Icon(
+                                    Icons.image,
+                                  ),
+                                ),
                         ),
                       ),
                       Padding(
@@ -116,11 +123,11 @@ class _DetailsMoviePageState extends State<DetailsMoviePage> {
                                   }
                                 },
                                 child: isWatchlist
-                                    ? Icon(
+                                    ? const Icon(
                                         Icons.bookmark,
                                         size: 32,
                                       )
-                                    : Icon(
+                                    : const Icon(
                                         Icons.bookmark_outline,
                                         size: 32,
                                       ))
@@ -151,8 +158,8 @@ class _DetailsMoviePageState extends State<DetailsMoviePage> {
                                   child: Chip(
                                       label: Text(
                                     item.name,
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.w500),
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.w500),
                                   )),
                                 )
                             ],
@@ -164,7 +171,7 @@ class _DetailsMoviePageState extends State<DetailsMoviePage> {
                             left: 36.0, right: 36, top: 8),
                         child: Row(
                           children: [
-                            Icon(Icons.schedule),
+                            const Icon(Icons.schedule),
                             const SizedBox(
                               width: 8,
                             ),
@@ -175,11 +182,13 @@ class _DetailsMoviePageState extends State<DetailsMoviePage> {
                           ],
                         ),
                       ),
-                      Padding(
+                      Container(
+                        width: MediaQuery.of(context).size.width,
                         padding: const EdgeInsets.only(
                             left: 36.0, right: 36, top: 8),
                         child: Text(
                           detailsMovie.overview,
+                          textAlign: TextAlign.left,
                           style: const TextStyle(
                               fontSize: 16, fontWeight: FontWeight.w500),
                         ),

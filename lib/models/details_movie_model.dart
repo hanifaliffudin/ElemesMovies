@@ -8,18 +8,16 @@ String detailsMovieModelToJson(DetailsMovieModel data) =>
 
 class DetailsMovieModel {
   final bool adult;
-  final String backdropPath;
   final dynamic belongsToCollection;
   final int budget;
   final List<Genre> genres;
   final String homepage;
   final int id;
-  final String imdbId;
   final String originalLanguage;
   final String originalTitle;
   final String overview;
   final double popularity;
-  final String posterPath;
+  String? posterPath;
   final DateTime releaseDate;
   final int revenue;
   final int runtime;
@@ -32,13 +30,11 @@ class DetailsMovieModel {
 
   DetailsMovieModel({
     required this.adult,
-    required this.backdropPath,
     required this.belongsToCollection,
     required this.budget,
     required this.genres,
     required this.homepage,
     required this.id,
-    required this.imdbId,
     required this.originalLanguage,
     required this.originalTitle,
     required this.overview,
@@ -58,13 +54,11 @@ class DetailsMovieModel {
   factory DetailsMovieModel.fromJson(Map<String, dynamic> json) =>
       DetailsMovieModel(
         adult: json["adult"],
-        backdropPath: json["backdrop_path"],
         belongsToCollection: json["belongs_to_collection"],
         budget: json["budget"],
         genres: List<Genre>.from(json["genres"].map((x) => Genre.fromJson(x))),
         homepage: json["homepage"],
         id: json["id"],
-        imdbId: json["imdb_id"],
         originalLanguage: json["original_language"],
         originalTitle: json["original_title"],
         overview: json["overview"],
@@ -83,13 +77,11 @@ class DetailsMovieModel {
 
   Map<String, dynamic> toJson() => {
         "adult": adult,
-        "backdrop_path": backdropPath,
         "belongs_to_collection": belongsToCollection,
         "budget": budget,
         "genres": List<dynamic>.from(genres.map((x) => x.toJson())),
         "homepage": homepage,
         "id": id,
-        "imdb_id": imdbId,
         "original_language": originalLanguage,
         "original_title": originalTitle,
         "overview": overview,
