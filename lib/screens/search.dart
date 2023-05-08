@@ -84,8 +84,6 @@ class _SearchBarState extends State<_SearchBar> {
                 },
                 icon: Icon(Icons.search)),
             hintText: 'Search a movie',
-            prefixIconColor: Colors.white,
-            prefixIcon: Icon(Icons.search),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(25.0),
             )));
