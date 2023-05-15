@@ -42,11 +42,19 @@ class WatchlistCard extends StatelessWidget {
                 height: 150,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(12.0),
-                  child: Image.network(
-                    constants.AppConstants.imageUrlW500 + movie.posterPath,
-                    width: 100,
-                    fit: BoxFit.cover,
-                  ),
+                  child: movie.posterPath != null
+                      ? Image.network(
+                          constants.AppConstants.imageUrlW500 +
+                              movie.posterPath!,
+                          width: 100,
+                          fit: BoxFit.cover,
+                        )
+                      : const SizedBox(
+                          width: 100,
+                          child: Icon(
+                            Icons.image,
+                          ),
+                        ),
                 ),
               ),
             ),
